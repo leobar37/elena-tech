@@ -38,7 +38,7 @@ uncertain.
 Your first command is always:
 
 ```sh
-npx --yes @avileo/agent-cli@0.1.0 business show --json
+npx --yes @tarileo/avileo-catalog-cli@0.1.0 business show --json
 ```
 
 Stop unless the result confirms registered mode `tienda`, effective catalog
@@ -52,6 +52,7 @@ bounded lists only for discovery. Read products before edits, variants before
 reordering, and current inventory before a correction.
 
 - [Products and variants](references/products-and-variants.md)
+- [Complete CLI workflows and JSON inputs](references/cli-workflows.md)
 - [Images and galleries](references/images.md)
 - [Inventory](references/inventory.md)
 - [Durable scraped imports](references/bulk-import.md)

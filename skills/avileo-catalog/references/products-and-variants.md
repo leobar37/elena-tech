@@ -11,8 +11,8 @@ asset IDs, never source URLs.
 Useful reads:
 
 ```sh
-npx --yes @avileo/agent-cli@0.1.0 catalog product get <PRODUCT_ID> --json
-npx --yes @avileo/agent-cli@0.1.0 catalog variant list <PRODUCT_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.1.0 catalog product get <PRODUCT_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.1.0 catalog variant list <PRODUCT_ID> --json
 ```
 
 Do not hard-delete products or variants. Use the supported deactivate command
