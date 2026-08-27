@@ -6,22 +6,23 @@ description: >
   integration, automation, or agent when the available key type is uncertain.
 license: MIT
 metadata:
-  version: "0.1.0"
-compatibility: Requires an environment capable of injecting secrets. This skill does not accept, reveal, store, or transmit raw keys.
+  version: '0.1.1'
 ---
 
 # Avileo API key routing
 
 Classify the requested operation before choosing a credential. A prefix is not
 an authorization grant and no key may cross its intended boundary.
+Require the host environment to inject secrets. Never accept, reveal, store, or
+transmit a raw key.
 
 ## Key matrix
 
-| Key | Use it for | Never use it for |
-| --- | --- | --- |
-| `avileo_pk_` | Public storefront/browser SDK reads and approved public flows. | Tenant dashboard actions, catalog-agent writes, inventory, or System Admin. |
+| Key          | Use it for                                                          | Never use it for                                                                         |
+| ------------ | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `avileo_pk_` | Public storefront/browser SDK reads and approved public flows.      | Tenant dashboard actions, catalog-agent writes, inventory, or System Admin.              |
 | `avileo_sk_` | Secret tenant catalog automation for an approved `tienda` business. | Browser exposure, another tenant, System Admin, or an operation outside granted actions. |
-| `sak_` | A separately approved System Admin operator integration. | Tenant catalog CLI, storefront/browser code, or any human-only operation. |
+| `sak_`       | A separately approved System Admin operator integration.            | Tenant catalog CLI, storefront/browser code, or any human-only operation.                |
 
 ## Catalog agent route
 
@@ -41,10 +42,10 @@ successful public read as authorization for staff or catalog operations.
 ## System Admin route
 
 A `sak_` credential is cross-product operator access, not a tenant key. This
-public repository intentionally provides no executable System Admin skill yet:
+public distribution intentionally provides no executable System Admin skill:
 a public secret-injection-only operator CLI and explicit machine-safe scope
 policy must exist first.
 
 If a request requires System Admin work, stop and route it to the controlled
-operator environment. Do not substitute `avileo_sk_` or `avileo_pk_`; do not
-attempt direct transport calls; do not bypass human-only or step-up controls.
+operator environment. Do not substitute `avileo_sk_` or `avileo_pk_`, attempt
+direct transport calls, or bypass human-only or step-up controls.
