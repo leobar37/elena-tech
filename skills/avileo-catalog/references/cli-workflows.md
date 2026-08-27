@@ -1,6 +1,6 @@
 # Complete CLI workflows
 
-Use the pinned `@tarileo/avileo-catalog-cli@0.1.4` release and request `--json`
+Use the pinned `@tarileo/avileo-catalog-cli@0.2.0` release and request `--json`
 on every invocation. Replace angle-bracket values only with identifiers returned
 by an earlier read. Never invent IDs or put a secret in a command or input file.
 
@@ -15,19 +15,19 @@ exit code `2`; non-retryable authorization or validation failures use exit code
 Use reads before mutations and keep list queries bounded.
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 business show --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog product list --limit 25 --offset 0 --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog product get <PRODUCT_ID> --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog variant list <PRODUCT_ID> --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog variant get <VARIANT_ID> --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog category list --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog category get <CATEGORY_ID> --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog tag list --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog tag get <TAG_ID> --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog asset list --limit 25 --offset 0 --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog asset get <ASSET_ID> --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog inventory get <VARIANT_ID> --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog inventory movements <VARIANT_ID> --limit 25 --offset 0 --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 business show --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog product list --limit 25 --offset 0 --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog product get <PRODUCT_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog variant list <PRODUCT_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog variant get <VARIANT_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog category list --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog category get <CATEGORY_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog tag list --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog tag get <CATEGORY_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog asset list --limit 25 --offset 0 --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog asset get <ASSET_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory get <VARIANT_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory movements <VARIANT_ID> --limit 25 --offset 0 --json
 ```
 
 ## JSON input rules
@@ -66,16 +66,16 @@ A product may include its initial variants:
 Preview, describe the exact result, obtain explicit approval, then apply:
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog product create --from product.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog product create --from product.json --apply --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog product update <PRODUCT_ID> --from update.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog product update <PRODUCT_ID> --from update.json --apply --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog product deactivate <PRODUCT_ID> --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog product deactivate <PRODUCT_ID> --apply --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog variant create <PRODUCT_ID> --from variant.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog variant create <PRODUCT_ID> --from variant.json --apply --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog variant reorder <PRODUCT_ID> --from reorder.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog variant reorder <PRODUCT_ID> --from reorder.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog product create --from product.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog product create --from product.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog product update <PRODUCT_ID> --from update.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog product update <PRODUCT_ID> --from update.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog product deactivate <PRODUCT_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog product deactivate <PRODUCT_ID> --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog variant create <PRODUCT_ID> --from variant.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog variant create <PRODUCT_ID> --from variant.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog variant reorder <PRODUCT_ID> --from reorder.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog variant reorder <PRODUCT_ID> --from reorder.json --apply --json
 ```
 
 An update may include only changed fields. Nullable fields can be cleared with
@@ -92,10 +92,10 @@ Category payloads use `name` and optional `color`. Tag payloads require both.
 Read the target and preserve assignment guards before update or deletion.
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog category create --from category.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog category create --from category.json --apply --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog tag update <TAG_ID> --from tag.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog tag update <TAG_ID> --from tag.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog category create --from category.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog category create --from category.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog tag update <TAG_ID> --from tag.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog tag update <TAG_ID> --from tag.json --apply --json
 ```
 
 ## Images
@@ -108,10 +108,10 @@ public HTTPS URL in `asset-url.json`. Do not include credentials or local paths.
 ```
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog asset upload --file ./product.png --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog asset upload --file ./product.png --apply --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog asset import-url --from asset-url.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog asset import-url --from asset-url.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog asset upload --file ./product.png --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog asset upload --file ./product.png --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog asset import-url --from asset-url.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog asset import-url --from asset-url.json --apply --json
 ```
 
 Use the returned asset ID in a later product or variant payload. Never treat an
@@ -136,10 +136,10 @@ An adjustment applies a signed delta; a set protects against stale writes with
 ```
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog inventory adjust <VARIANT_ID> --from adjust.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog inventory adjust <VARIANT_ID> --from adjust.json --apply --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog inventory set <VARIANT_ID> --from set.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog inventory set <VARIANT_ID> --from set.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory adjust <VARIANT_ID> --from adjust.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory adjust <VARIANT_ID> --from adjust.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory set <VARIANT_ID> --from set.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory set <VARIANT_ID> --from set.json --apply --json
 ```
 
 ## Durable bulk import
@@ -149,10 +149,10 @@ only by an explicit product ID or stored external reference, never merely by
 similar name or SKU.
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog import preview --from import.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog import apply <IMPORT_ID> --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog import apply <IMPORT_ID> --apply --json
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 catalog import status <IMPORT_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog import preview --from import.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog import apply <IMPORT_ID> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog import apply <IMPORT_ID> --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog import status <IMPORT_ID> --json
 ```
 
 Review and approve the returned durable preview before apply. Use exactly its
