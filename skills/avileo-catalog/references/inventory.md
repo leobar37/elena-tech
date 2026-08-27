@@ -7,8 +7,8 @@ rather than attempting an adjustment when that action is absent.
 ## Read before correction
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory get <variant-id> --json
-npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory movements <variant-id> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.1 catalog inventory get <variant-id> --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.1 catalog inventory movements <variant-id> --json
 ```
 
 Use `--reason`, `--limit`, and `--offset` on movements only to narrow an
@@ -23,10 +23,10 @@ request changes by a delta or sets an expected quantity, show the current
 snapshot, and obtain explicit approval before applying.
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory adjust <variant-id> --from adjustment.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory adjust <variant-id> --from adjustment.json --apply --json
-npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory set <variant-id> --from inventory-set.json --json
-npx --yes @tarileo/avileo-catalog-cli@0.2.0 catalog inventory set <variant-id> --from inventory-set.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.1 catalog inventory adjust <variant-id> --from adjustment.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.1 catalog inventory adjust <variant-id> --from adjustment.json --apply --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.1 catalog inventory set <variant-id> --from inventory-set.json --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.1 catalog inventory set <variant-id> --from inventory-set.json --apply --json
 ```
 
 After approval, report the returned snapshot and safe movement result. Do not
