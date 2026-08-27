@@ -35,7 +35,7 @@ Para conectar una CLI en una máquina de confianza, sin copiar una clave en el
 chat ni en argumentos:
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.2.1 auth login --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.2 auth login --json
 ```
 
 La CLI genera un código temporal separado del código de dispositivo, muestra
@@ -88,7 +88,7 @@ en prompts, URLs, archivos del repositorio ni salidas del proceso.
 Your first command is always:
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.2.1 business show --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.2 business show --json
 ```
 
 Stop if the response does not confirm all of the following: registered mode is
