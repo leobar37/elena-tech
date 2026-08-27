@@ -14,9 +14,10 @@ metadata:
 # Avileo catalog
 
 Use this skill only for a registered Avileo business operating in `tienda` mode.
-Require Node.js 20+, network access, and an injected `AVILEO_AGENT_API_KEY`.
-The host injects the required secret environment variable; never request,
-store, display, or pass credentials through command arguments or input files.
+Require Node.js 20+ and network access. For a human's first connection, use
+the device authorization link below; for CI/CD and already-connected agents,
+inject `AVILEO_AGENT_API_KEY`. Never request, store, display, or pass credentials
+through command arguments, URLs, prompts, or input files.
 
 Use only an `avileo_sk_` Agent Key here. Do not substitute an `avileo_pk_`
 public Client Key or a `sak_` System Admin key. Read
@@ -27,6 +28,45 @@ This runbook uses the official CLI. For integrations that cannot install Node
 or Bun, use the same server-to-server contract through the
 [Agent HTTP API](/docs/agent-http); the credential, context gate, permissions,
 idempotency and approval rules remain identical.
+
+## Conectar la CLI mediante un link
+
+Para conectar una CLI en una máquina de confianza, sin copiar una clave en el
+chat ni en argumentos:
+
+```sh
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 auth login --json
+```
+
+La CLI genera un código temporal separado del código de dispositivo, muestra
+solo `verificationUri`, `userCode` y la expiración, e intenta abrir el enlace
+con `xdg-open` (o `open` en macOS). Si no abre el navegador, abre manualmente
+el enlace en:
+
+```txt
+https://avileo.theelena.me/config/catalogo/agentes
+```
+
+Inicia sesión en Avileo, revisa que el negocio y los permisos sean correctos y
+elige **Aprobar conexión**. Los permisos predeterminados son `business:read`,
+`catalog:read`, `catalog:write`, `assets:read`, `assets:write` e
+`inventory:read`; `inventory:write` requiere una elección explícita. La CLI
+espera el resultado, guarda la nueva credencial local con permisos restrictivos
+y nunca la imprime.
+
+El diálogo esperado del agente es pedir al usuario que ejecute `auth login` y
+abra el link; nunca pedir una `avileo_sk_...` por chat. Comprueba la conexión
+sin revelar secretos:
+
+```sh
+avileo auth status --json
+avileo business show --json
+```
+
+`auth logout` elimina solo la credencial local. No revoca la clave remota:
+revócala desde Avileo cuando sea necesario. Agentes automatizados y CI/CD deben
+seguir usando exclusivamente `AVILEO_AGENT_API_KEY`; no guardes esa variable
+en prompts, URLs, archivos del repositorio ni salidas del proceso.
 
 ## Safety rules
 
@@ -48,7 +88,7 @@ idempotency and approval rules remain identical.
 Your first command is always:
 
 ```sh
-npx --yes @tarileo/avileo-catalog-cli@0.1.4 business show --json
+npx --yes @tarileo/avileo-catalog-cli@0.2.0 business show --json
 ```
 
 Stop if the response does not confirm all of the following: registered mode is
