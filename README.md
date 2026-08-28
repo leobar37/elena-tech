@@ -6,15 +6,23 @@ This repository is a generated mirror. The normative source lives in
 
 ## Skills
 
-| Skill                | Purpose                                                             | Credential boundary                                      |
-| -------------------- | ------------------------------------------------------------------- | -------------------------------------------------------- |
-| `avileo-key-routing` | Chooses the correct Avileo credential boundary before an operation. | Does not execute privileged operations.                  |
-| `avileo-catalog`     | Safely inspects and manages a registered Avileo `tienda` catalog.   | Requires injected `AVILEO_AGENT_API_KEY` (`avileo_sk_`). |
+| Skill                | Purpose                                                             | Credential boundary                                        |
+| -------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `avileo-key-routing` | Chooses the correct Avileo credential boundary before an operation. | Does not execute privileged operations.                    |
+| `avileo-catalog`     | Safely inspects and manages a registered Avileo `tienda` catalog.   | Requires injected `AVILEO_AGENT_API_KEY` (`avileo_sk_`).   |
+| `avileo-storefront`  | Builds a public catalog/storefront with TanStack Start and the SDK. | Uses a publishable tenant-bound Client Key (`avileo_pk_`). |
 
 Install the catalog skill for Codex, Claude Code, or another compatible host:
 
 ```sh
 npx skills add leobar37/elena-tech --skill avileo-catalog
+```
+
+Install the storefront skill when building a customer-facing catalog, cart,
+checkout, or assistant:
+
+```sh
+npx skills add leobar37/elena-tech --skill avileo-storefront
 ```
 
 ## Credential policy
